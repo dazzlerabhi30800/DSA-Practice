@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes</title>
+</head>
+<style>
+    body {
+        padding: 1rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        body {
+            background: #121212;
+            color: #fff;
+        }
+    }
+</style>
+
+
+<body>
+    <h1>Classes In JS</h1>
+</body>
+
+<script>
+    class LinkedList {
+        constructor(value) {
+            this.value = value;
+        }
+        getValue() {
+            return this.value;
+        }
+    }
+    const list = new LinkedList(4);
+    console.log(list.getValue());
+
+
+    let obj1 = {
+        value: 11,
+    }
+    let obj2 = obj1;
+    console.log(obj2.value);
+    obj1.value = 2;
+    console.log(obj2.value);
+</script>
+
+</html>

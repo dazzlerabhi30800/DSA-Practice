@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big O</title>
+</head>
+<style>
+    body {
+        background: #121212;
+        color: #fff;
+    }
+</style>
+
+<body>
+    <h1>Big O Notation</h1>
+</body>
+
+</html>
+
+<script>
+    function logItems(n) {
+        for (i = 0; i < n; i++) {
+            console.log(i);
+        }
+        for (j = 0; j < n; j++) {
+            console.log(j);
+        }
+
+        // for above code time complexity will n + n = O(n) but we will neglect the constant i.e. drop constant, therefore the time complexity will be O(n)
+    }
+
+    function logItems(n) {
+        for (i = 0; i < n; i++) {
+            for (j = 0; j < n; j++) {
+                console.log(i, j);
+            }
+        }
+        // time complexity of O(n*n) i.e. Alvin Squared
+    }
+    // logItems(10);
+
+    // O(1)
+    function addItem(n) {
+        // return n + n; O(1)
+        return n + n + n; // O(2) but that will be O(1) or constant time
+    }
+
+    // O(log n)
+    let myArr = [1, 2, 3, 4];
+    console.log(myArr[0]);
+    myArr.shift();
+    console.log(myArr[0]);
+
+
+</script>
