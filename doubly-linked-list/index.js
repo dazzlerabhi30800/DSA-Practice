@@ -30,9 +30,26 @@ class DoubleLinkedList {
         this.length++;
         return this;
     }
+    pop() {
+        if (this.length === 0) return undefined;
+        let temp = this.tail;
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null
+        }
+        else {
+            this.tail = temp.prev;
+            this.tail.next = null;
+            temp.prev = null;
+        }
+
+        this.length--;
+        return temp;
+    }
 }
 
 const node1 = new DoubleLinkedList(1);
 node1.push(2);
-node1.push(3);
+// node1.push(3);
+node1.pop();
 console.log(node1);
