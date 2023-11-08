@@ -124,6 +124,24 @@ class DoubleLinkedList {
         temp.next = null;
         this.length--
     }
+    reverse() {
+        if (!this.head || !this.head.next) return this;
+        let current = this.head;
+        let temp = null;
+        while (current != null) {
+            temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
+            current = current.prev;
+        }
+
+
+        if (temp != null) {
+            this.head = temp.prev;
+        }
+        console.log(this);
+        // return this;
+    }
 }
 
 const node1 = new DoubleLinkedList(1);
@@ -138,5 +156,6 @@ node1.push(4);
 
 // node1.set(2, 444);
 // node1.insert(2, 444);
-node1.remove(1);
-console.log(node1);
+// node1.remove(1);
+node1.reverse();
+// console.log(node1)
