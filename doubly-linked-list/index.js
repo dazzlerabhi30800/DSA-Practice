@@ -16,7 +16,6 @@ class DoubleLinkedList {
     }
     push(value) {
         const newNode = new Node(value);
-        let temp = this.tail;
         if (!this.head) {
             this.head = newNode;
             this.tail = newNode;
