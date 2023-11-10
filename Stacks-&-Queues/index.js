@@ -37,6 +37,9 @@ class Stack {
         this.length--;
         return temp;
     }
+    peek() {
+        return this.top;
+    }
 }
 
 
@@ -76,9 +79,10 @@ class Queue {
     }
 }
 
-// const stack1 = new Stack(4);
-// stack1.push(77);
-// stack1.push(10);
+const stack1 = new Stack(4);
+stack1.push(77);
+stack1.push(10);
+console.log(stack1.peek());
 // console.log(stack1.pop());
 // console.log(stack1);
 
