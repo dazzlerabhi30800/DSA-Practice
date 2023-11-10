@@ -16,29 +16,31 @@ class BST {
             this.root = newNode;
             return true;
         }
-        let temp = this.root
+        let temp = this.root;
         while (true) {
-            if (newNode.value === temp.value) return undefined;
-            if (newNode.value < temp.value) {
-                if (temp.left === null) {
+            if (temp.value > newNode.value) {
+                if (!temp.left) {
                     temp.left = newNode;
                     return this;
                 }
-                temp = temp.left;
+                temp = temp.left
             }
-            else {
-                if (temp.right === null) {
+            else if (temp.value < newNode.value) {
+                if (!temp.right) {
                     temp.right = newNode;
                     return this;
                 }
-                temp = temp.right
+                temp = temp.right;
+            }
+            else {
+                return this;
             }
         }
     }
     contains(value) {
-        if (!this.root) return false;
+        if (!this.root) return undefined;
         let temp = this.root;
-        while (temp) {
+        while (true) {
             if (temp.value > value) {
                 temp = temp.left;
             }
@@ -49,9 +51,6 @@ class BST {
                 return temp;
             }
         }
-        if (!temp) {
-            return undefined;
-        }
     }
     minValueNode(currentNode) {
         while (currentNode.left) {
@@ -59,7 +58,41 @@ class BST {
         }
         return currentNode;
     }
-
+    maxValueNode(currentNode) {
+        while (currentNode.right) {
+            currentNode = currentNode.right;
+        }
+        return currentNode;
+    }
+    getMiddle(node) {
+        let temp = this.root
+        let currTemp = this.root;
+        let i = 0;
+        if (this.root.left.value === node.value) {
+            while (temp.left) {
+                temp = temp.left;
+                i++;
+            }
+            for (var j = 0; j < Math.floor(i / 2); j++) {
+                currTemp = currTemp.left;
+            }
+            return currTemp;
+        }
+        else if (this.root.right.value === node.value) {
+            while (temp.right) {
+                temp = temp.right;
+                i++;
+            }
+            console.log(i);
+            for (var j = 0; j < Math.floor(i / 2); j++) {
+                currTemp = currTemp.right;
+            }
+            return currTemp;
+        }
+        else {
+            return this.root;
+        }
+    }
 }
 
 let myTree = new BST();
@@ -68,6 +101,10 @@ myTree.insert(8);
 myTree.insert(3);
 myTree.insert(2);
 myTree.insert(7);
+myTree.insert(44);
+// console.log(myTree);
 // console.log(myTree.contains(3));
-console.log(myTree.minValueNode(myTree.root.right));
-// console.log(myTree.right);
+// console.log(myTree.contains(3));
+// console.log(myTree.minValueNode(myTree.root.right));
+// console.log(myTree.maxValueNode(myTree.root.right));
+console.log(myTree.getMiddle(myTree.root.left));
