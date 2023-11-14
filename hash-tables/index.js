@@ -41,6 +41,18 @@ class HashTable {
         }
         return allKeys;
     }
+    removeKey(key) {
+        let index = this._hash(key);
+        if (this.dataMap[index]) {
+            for (let i = 0; i < this.dataMap[index].length; i++) {
+                if (this.dataMap[index][i][0] === key) {
+                    this.dataMap[index].splice(i, 1);
+                    return this;
+                }
+            }
+        }
+        return undefined;
+    }
 }
 
 
@@ -49,8 +61,9 @@ const table1 = new HashTable();
 table1._hash("nails");
 table1.set("nails", 400);
 table1.set("washers", 50);
-console.log(table1.get("washers"));
-console.log(table1.keys());
+// console.log(table1.get("washers"));
+// console.log(table1.keys());
+console.log(table1.removeKey("washers"));
 // console.log(table1);
 
 
@@ -85,5 +98,5 @@ let arr2 = [4, 2, 5];
 
 
 
-console.log(itemsInCommon1(arr1, arr2));
-console.log(itemsInCommon2(arr1, arr2));
+// console.log(itemsInCommon1(arr1, arr2));
+// console.log(itemsInCommon2(arr1, arr2));
