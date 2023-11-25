@@ -158,3 +158,10 @@ node1.push(4);
 // node1.remove(1);
 node1.reverse();
 // console.log(node1)
+
+function printItems(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = arr[i] * i;
+    }
+    return arr;
+}
