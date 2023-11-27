@@ -102,6 +102,20 @@ class BST {
 
     }
 
+
+    // Depth First Search InOrder - in this we get result array in ascending order (lowest to highest)
+    DFSInOrder() {
+        let results = [];
+        function traverse(currentNode) {
+            if (currentNode.left) traverse(currentNode.left);
+            results.push(currentNode.value);
+            if (currentNode.right) traverse(currentNode.right);
+        }
+
+        traverse(this.root);
+        return results;
+    }
+
 }
 
 
@@ -113,4 +127,5 @@ myTree.insert(5);
 myTree.insert(6);
 // console.log(myTree.BFS());
 // console.log(myTree.DFSPreOrder());
-console.log(myTree.DFSPostOrder());
+// console.log(myTree.DFSPostOrder());
+console.log(myTree.DFSInOrder());
