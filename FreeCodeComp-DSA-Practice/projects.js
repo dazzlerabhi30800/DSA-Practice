@@ -193,7 +193,7 @@ function checkCashRegister(price, cash, cid) {
 
         for (let i = 0; i < cid.length; i++) {
             const currency = cid[i][0];
-            const currencyTotal = cid[i][1];
+            let currencyTotal = cid[i][1];
             const unit = currencyUnit[currency];
             let currencyAmount = 0;
 
