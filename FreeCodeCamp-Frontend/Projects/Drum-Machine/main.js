@@ -46,10 +46,22 @@ const keyArr = [
 ];
 
 
+const audioName = {
+  'Q': "Heater 1",
+  'W': "Heater 2",
+  'E': "Heater 3",
+  'A': "Heater 4",
+  'S': "Clap",
+  'D': "Open HH",
+  'Z': "Kick n' Hat",
+  'X': "Kick",
+  'C': "Closed HH",
+}
+
 const drumPad = keyArr.map((key) => {
   return `
   <div class="drum-pad" id=${key.key}>
-  <audio class="clip"  src=${key.audio} type="audio/mpeg" ></audio>
+  <audio class="clip" id=${key.key} src=${key.audio} type="audio/mpeg" ></audio>
   <span>${key.key}</span>
   </div>
   
@@ -59,27 +71,38 @@ const drumPad = keyArr.map((key) => {
 
 // document.querySelector('.pad-container').innerHTML = drumPad;
 
-
-$("document").ready(function () {
+$('document').ready(function () {
   $(".pad-container").html(drumPad);
-});
+})
 
 
-
-$(window).keydown(function (e) {
-  const keyPressed = e.originalEvent.key;
-  const numPad = document.getElementById(`${keyPressed.toUpperCase()}`)
-  if (numPad) {
-    numPad.classList.add('playing');
+function playMusic(key) {
+  const numPad = document.getElementById(`${key}`);
+  const audio = numPad?.querySelector(".clip");
+  if (numPad && audio) {
+    $(numPad).addClass("playing");
+    audio.currentTime = 0;
+    audio.play();
+    $("#display").text(audioName[key]);
     $(numPad).on('transitionend', function (e) {
-      numPad.classList.remove('playing');
+      $(numPad).removeClass("playing");
     })
   }
   else {
     return false;
   }
+}
+
+
+$(window).keydown(function (e) {
+  const keyPressed = e.originalEvent.key.toUpperCase();
+  playMusic(keyPressed);
 })
 
-$(".num-pad").on('transitionend', function (e) {
-  console.log(e);
+
+$('document').ready(function () {
+  $(".drum-pad").on("click", function (e) {
+    const target = e.target;
+    playMusic(target.id);
+  })
 })
