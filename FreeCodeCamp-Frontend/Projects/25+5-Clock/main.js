@@ -1,5 +1,5 @@
-let breakLength = 1;
-let sessionLength = 1;
+let breakLength = 5;
+let sessionLength = 25;
 
 let start = false;
 let breakStart = false;
@@ -43,8 +43,8 @@ $("#start_stop").click(function () {
             }
             if (seconds < 0 && minutes === 0 && breakStart) {
                 breakStart = false;
-                clearInterval(myInterval);
                 $("#timer-label").text("Session");
+                $("#bell").trigger("play");
                 minutes = sessionLength;
                 seconds = 0;
             }
@@ -62,8 +62,12 @@ $("#start_stop").click(function () {
 $("#reset").click(function () {
     start = false;
     clearInterval(myInterval);
+    breakLength = 5;
+    sessionLength = 25;
     minutes = sessionLength;
     seconds = 0;
+    $("#session-length").text(sessionLength);
+    $("#break-length").text(breakLength);
     $("#start_stop").children().removeClass('fa-pause');
     $("#start_stop").children().addClass('fa-play');
     $('#time-left').text(`${minutes < 10 ? "0" + minutes : minutes}: ${seconds < 10 ? "0" + seconds : seconds} `)
@@ -79,7 +83,7 @@ $("#break-decrement").click(function () {
 
 $("#break-increment").click(function () {
     if (start) return;
-    breakLength = breakLength + 1 > 60 ? 59 : breakLength + 1;
+    breakLength = breakLength + 1 >= 60 ? 59 : breakLength + 1;
     $("#break-length").text(breakLength);
 })
 
@@ -95,7 +99,7 @@ $("#session-decrement").click(function () {
 
 $("#session-increment").click(function () {
     if (start) return;
-    sessionLength = sessionLength + 1 > 60 ? 59 : sessionLength + 1;
+    sessionLength = sessionLength + 1 >= 60 ? 59 : sessionLength + 1;
     minutes = sessionLength;
     $("#session-length").text(sessionLength);
     $('#time-left').text(`${minutes < 10 ? "0" + minutes : minutes}: ${seconds < 10 ? "0" + seconds : seconds} `)
