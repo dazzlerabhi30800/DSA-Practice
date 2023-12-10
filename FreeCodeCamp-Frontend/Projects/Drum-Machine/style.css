@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: rgb(32, 34, 52);
+  color: #fff;
+}
+
+#drum-machine {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: clamp(300px, 70%, 450px);
+  background: rgb(64, 68, 83);
+
+  font-weight: 700;
+  padding: 1rem;
+}
+
+.pad-container {
+  flex-basis: 70%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.drum-pad {
+  color: #2a2929;
+  box-shadow: 3px 3px 0 2px #eeb9b9;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  background: rgb(176, 242, 244);
+  transition: 0.21s linear;
+}
+
+#display {
+  flex-basis: 30%;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to top, rgb(237, 150, 113), rgb(239, 101, 244));
+  font-size: 1.5rem;
+}
+
+.drum-pad:active {
+  transform: translate(3px, 3px);
+  box-shadow: none;
+}
+
+
+@media (hover:hover) {
+  .drum-pad {
+    cursor: pointer;
+  }
+
+  .playing {
+    transform: translate(3px, 3px);
+    box-shadow: none;
+  }
+}
