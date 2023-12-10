@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    background: rgb(36, 36, 54);
+    color: #fff;
+}
+
+h1 {
+    font-size: 2.8rem;
+}
+
+.session-break-container {
+    display: flex;
+    align-items: center;
+    width: clamp(300px, 80%, 600px);
+    justify-content: space-between;
+}
+
+h2 {
+    font-size: 2.4rem;
+}
+
+.time-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    border: 2px dotted rgb(243, 82, 141);
+    gap: 1rem;
+}
+
+.time-controller {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-size: 2rem;
+}
+
+.time-controller button {
+    outline: none;
+    background: none;
+    --blue: rgb(77, 188, 239);
+    border: 1px solid var(--blue);
+    color: #fff;
+    padding: 8px;
+    border-radius: 3px;
+    transition: 0.3s linear;
+}
+
+.session-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.session {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 0 3px #75f3a6;
+    gap: 1rem;
+    border-radius: 5px;
+}
+
+h3 {
+    font-size: 2.2rem;
+}
+
+#time-left {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.playback-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.playback-container button {
+    border: none;
+    outline: none;
+    background: none;
+    color: rgb(208, 238, 90);
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+@media (hover:hover) {
+    button {
+        cursor: pointer;
+    }
+
+    button:hover {
+        color: var(--blue);
+    }
+}
