@@ -10,10 +10,11 @@ const prevSpan = document.querySelector('.prevVal');
 
 let prevVal = null;
 let currVal = 0;
-let operand;
+let operand = null;
+let result = null;
 
 
-let operations = ["/", "X", "+", "-"]
+let operations = ["/", "*", "+", "-"]
 
 
 // this will check if currVal has already some operands in it
@@ -25,6 +26,9 @@ function checkNum(num) {
 
 function calculateNum(digit) {
     // if initital digit 0 & the first input is a operation then return;
+    if (digit == 'X') {
+        digit = "*";
+    }
     if (currVal === 0 && operations.includes(digit)) {
         return;
     }
@@ -44,11 +48,20 @@ function calculateNum(digit) {
     if (!operations.includes(digit)) {
         currVal = currVal > 0 ? currVal + digit : digit;
         prevVal = prevVal ? prevVal + digit : currVal;
+        operand = null;
     }
     else if (operations.includes(digit)) {
         if (prevVal) {
-            prevVal = prevVal + digit;
             currVal = digit;
+            // const regex = /[+|-|/|X]$/i;
+            if (operand) {
+                prevVal = prevVal.slice(0, prevVal.length - 1) + digit;
+            }
+            else {
+                prevVal = prevVal + digit;
+            }
+            operand = digit;
+            // console.log(prevVal);
         }
     }
 
@@ -74,5 +87,10 @@ clearBtn.addEventListener('click', () => {
 })
 
 equalBtn.onclick = () => {
-
+    if (!prevVal) return;
+    result = eval(prevVal);
+    prevSpan.textContent = `${prevVal}=${result}`;
+    currSpan.textContent = result;
+    prevVal = result.toString();
+    currVal = result.toString();
 }
