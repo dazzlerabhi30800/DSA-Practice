@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-$background-color: radial-gradient(circle, rgb(57, 56, 56), rgb(55, 56, 56));
+$background-color: radial-gradient(circle, rgb(50, 49, 49), rgb(55, 56, 56));
 $text-color: #fff;
 $font-poppins: 'Poppins', sans-serif;
 
@@ -39,10 +39,24 @@ body {
 #display {
     height: 50px;
     text-align: right;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
     padding: 1rem;
+    font-weight: 700;
+    font-size: 1.3rem;
     border: 2px solid #000000;
     border-radius: 5px;
     background: rgb(121, 138, 98);
+
+    & .prevVal {
+        font-size: 0rem;
+    }
+
+    &.active .prevVal {
+        font-size: 0.9rem;
+        color: #f8ef6f;
+    }
 }
 
 .calculator * {

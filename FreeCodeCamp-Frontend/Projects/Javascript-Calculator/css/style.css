@@ -6,7 +6,7 @@
   font-family: "Poppins", sans-serif; }
 
 body {
-  background: radial-gradient(circle, #393838, #373838);
+  background: radial-gradient(circle, #323131, #373838);
   min-height: 100vh;
   color: #fff;
   display: flex;
@@ -26,10 +26,20 @@ body {
 #display {
   height: 50px;
   text-align: right;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
   padding: 1rem;
+  font-weight: 700;
+  font-size: 1.3rem;
   border: 2px solid #000000;
   border-radius: 5px;
   background: #798a62; }
+  #display .prevVal {
+    font-size: 0rem; }
+  #display.active .prevVal {
+    font-size: 0.9rem;
+    color: #f8ef6f; }
 
 .calculator * {
   flex-basis: 100%; }
