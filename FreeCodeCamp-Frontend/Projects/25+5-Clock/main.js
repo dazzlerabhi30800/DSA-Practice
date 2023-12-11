@@ -104,4 +104,3 @@ $("#session-increment").click(function () {
     $("#session-length").text(sessionLength);
     $('#time-left').text(`${minutes < 10 ? "0" + minutes : minutes}: ${seconds < 10 ? "0" + seconds : seconds} `)
 })
-console.log(minutes);
