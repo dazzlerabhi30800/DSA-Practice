@@ -96,6 +96,34 @@ body {
 
 }
 
+#clear {
+    background: #f6185f;
+    grid-column: span 2;
+
+    &::before {
+        background: linear-gradient(90deg, #f3306e, #f16491);
+        border-left: 1px solid #fff4;
+        border-bottom: 1px solid #fff4;
+        border-top: 1px solid #fff4;
+    }
+}
+
+#equals {
+    background: #318bf2;
+    height: auto;
+    grid-row: span 2;
+
+    &::before {
+        background: linear-gradient(90deg, #358df2, #6bb2f0);
+        border-left: 1px solid #fff4;
+        border-bottom: 1px solid #fff4;
+        border-top: 1px solid #fff4;
+    }
+}
+
+#zero {
+    grid-column: span 2;
+}
 
 
 
