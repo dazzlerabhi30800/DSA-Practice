@@ -45,11 +45,14 @@ function calculateNum(digit) {
         return;
     }
 
+
+    // if the input digit is not from the operand then append it with the curr & prev Value
     if (!operations.includes(digit)) {
         currVal = currVal > 0 ? currVal + digit : digit;
         prevVal = prevVal ? prevVal + digit : currVal;
         operand = null;
     }
+    // if the input is in the operand;
     else if (operations.includes(digit)) {
         if (prevVal) {
             currVal = digit;
@@ -70,7 +73,6 @@ function calculateNum(digit) {
     currSpan.textContent = currVal;
 }
 
-// console.log(buttons);
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         calculateNum(button.textContent);
@@ -81,6 +83,7 @@ buttons.forEach(button => {
 clearBtn.addEventListener('click', () => {
     prevVal = 0;
     currVal = 0;
+    result = null;
     screen.classList.remove('active');
     prevSpan.textContent = 0;
     currSpan.textContent = 0;
