@@ -45,36 +45,35 @@ const keyArr = [
   },
 ];
 
-
 const audioName = {
-  'Q': "Heater 1",
-  'W': "Heater 2",
-  'E': "Heater 3",
-  'A': "Heater 4",
-  'S': "Clap",
-  'D': "Open HH",
-  'Z': "Kick n' Hat",
-  'X': "Kick",
-  'C': "Closed HH",
-}
+  Q: "Heater 1",
+  W: "Heater 2",
+  E: "Heater 3",
+  A: "Heater 4",
+  S: "Clap",
+  D: "Open HH",
+  Z: "Kick n' Hat",
+  X: "Kick",
+  C: "Closed HH",
+};
 
-const drumPad = keyArr.map((key) => {
-  return `
+const drumPad = keyArr
+  .map((key) => {
+    return `
   <div class="drum-pad" id=${key.key}>
   <audio class="clip" id=${key.key} src=${key.audio} type="audio/mpeg" ></audio>
   <span>${key.key}</span>
   </div>
   
   `;
-}).join("");
-
+  })
+  .join("");
 
 // document.querySelector('.pad-container').innerHTML = drumPad;
 
-$('document').ready(function () {
+$("document").ready(function () {
   $(".pad-container").html(drumPad);
-})
-
+});
 
 function playMusic(key) {
   const numPad = document.getElementById(`${key}`);
@@ -84,25 +83,22 @@ function playMusic(key) {
     audio.currentTime = 0;
     audio.play();
     $("#display").text(audioName[key]);
-    $(numPad).on('transitionend', function (e) {
+    $(numPad).on("transitionend", function () {
       $(numPad).removeClass("playing");
-    })
-  }
-  else {
+    });
+  } else {
     return false;
   }
 }
 
-
 $(window).keydown(function (e) {
   const keyPressed = e.originalEvent.key.toUpperCase();
   playMusic(keyPressed);
-})
+});
 
-
-$('document').ready(function () {
+$("document").ready(function () {
   $(".drum-pad").on("click", function (e) {
     const target = e.target;
     playMusic(target.id);
-  })
-})
+  });
+});
